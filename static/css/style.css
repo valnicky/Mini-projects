@@ -1,9 +1,11 @@
 .container-1,
-.container-2 {
+.container-2,
+.container-3 {
     background-color: #ffd;
     margin: 0 auto;
     width: 75%;
     text-align: center;
+    padding-top: 15px;
 }
 
 .flex-box-container-1,
@@ -46,4 +48,28 @@
 #flex-box-result-2 div img {
     width: 100%;
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.7);
+}
+
+.container-3 {
+    background-color: dff;
+}
+
+.flex-box-container-3 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.flex-box-container-3 div {
+    width: 30%;
+    margin: 1.5%;
+}
+
+.flex-box-container-3 div img {
+    width: 100%;
+}
+
+.flex-box-container-3 div:hover {
+    box-shadow: 0px 10px 50px rgba(80, 134, 235, 0.7);
+    border-radius: 15px;
 }
