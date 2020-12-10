@@ -51,7 +51,7 @@
 }
 
 .container-3 {
-    background-color: dff;
+    background-color: #f9f3f3;
 }
 
 .flex-box-container-3 {
@@ -61,8 +61,8 @@
 }
 
 .flex-box-container-3 div {
-    width: 30%;
-    margin: 1.5%;
+    width: 26%;
+    margin: 3%;
 }
 
 .flex-box-container-3 div img {
@@ -70,6 +70,6 @@
 }
 
 .flex-box-container-3 div:hover {
-    box-shadow: 0px 10px 50px rgba(80, 134, 235, 0.7);
+    /* box-shadow: 0px 10px 50px rgba(80, 134, 235, 0.7);*/
     border-radius: 15px;
 }

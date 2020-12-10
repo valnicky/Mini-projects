@@ -33,7 +33,7 @@ function generate() {
 
 /*challenge 3*/
 
-/*1. Paper beats Rocks
+/*1. Paper beats Rock
 2. Rock beats Scissors
 3. Scissors beats Paper */
 
@@ -49,8 +49,8 @@ function choose(yourChoice) {
 
     let message = finalMessage(results); //{'message': 'You won!', 'color': 'green'}
     //console.log(message);
-    rpsFrontEnd(humanChoice.id, botChoice, message);
-    console.log(humanChoice.id);
+    rpsFrontEnd(humanChoice, botChoice, message);
+    // console.log(humanChoice);
 }
 
 function randToRpsInt() {
@@ -82,7 +82,7 @@ function finalMessage([yourscore, computerscore]) {
     if (yourscore === 0) {
         return { 'message': 'You lost!', 'color': 'red' }
     } else if (yourscore === 1) {
-        return { 'message': 'You won!', 'color': 'green' }
+        return { 'message': 'You won!', 'color': 'blue' }
     } else {
         return { 'message': 'You tied!', 'color': 'yellow' }
     }
@@ -97,24 +97,36 @@ function rpsFrontEnd(humanChoiceImage, botChoiceImage, message) {
     }
 
     //let's remove all the images
-    document.getElementById('rock').remove();
-    document.getElementById('paper').remove();
-    document.getElementById('scissors').remove();
-
+    document.querySelector('#firstDiv').remove();
+    document.querySelector('#secondDiv').remove();
+    document.querySelector('#thirdDiv').remove();
 
     let humanDiv = document.createElement('div');
     let botDiv = document.createElement('div');
     let messageDiv = document.createElement('div');
 
-    console.log(humanChoiceImage);
-    humanDiv.innerHTML = "<img src = ' " + imagesDatabase[humanChoiceImage] + " '>";
+    console.log(message);
+    // console.log(humanChoiceImage);
+
+    //humanDiv.innerHTML = "<img style='box-shadow: 0 10px 50px rgba(251, 119, 119, 1);' src = ' " + imagesDatabase[humanChoiceImage] + " '  >";
+    humanDiv.innerHTML = `<img style='box-shadow: 0 10px 50px ${message.color};' src = ' ${imagesDatabase[humanChoiceImage]}'  >`;
 
 
-
-
-
+    messageDiv.innerHTML = "<p style='font-size:3em; font-weight:700; padding-top:20%; height:100%;'>" + message.message + "</p>";
+    let botColor;
+    if (message.color === 'red') {
+        botColor = 'blue';
+    } else if (message.color === 'blue') {
+        botColor = 'red';
+    } else {
+        botColor = 'yellow';
+    }
+    //botDiv.innerHTML = "<img style='box-shadow: 0 10px 50px rgba(100, 133, 163, 1);'  src = ' " + imagesDatabase[botChoiceImage] + " '>";
+    botDiv.innerHTML = `<img style='box-shadow: 0 10px 50px ${botColor};'  src = ' ${imagesDatabase[botChoiceImage] }'>`;
 
     document.querySelector('.flex-box-container-3').appendChild(humanDiv);
+    document.querySelector('.flex-box-container-3').appendChild(messageDiv);
+    document.querySelector('.flex-box-container-3').appendChild(botDiv);
 
 
 }
