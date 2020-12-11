@@ -1,6 +1,7 @@
 .container-1,
 .container-2,
-.container-3 {
+.container-3,
+.container-4 {
     background-color: #ffd;
     margin: 0 auto;
     width: 75%;
@@ -9,7 +10,8 @@
 }
 
 .flex-box-container-1,
-.flex-box-container-2 {
+.flex-box-container-2,
+.flex-box-container-4 {
     border: 1px solid #000;
     display: flex;
     padding: 10px;
