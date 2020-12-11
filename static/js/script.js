@@ -105,14 +105,14 @@ function rpsFrontEnd(humanChoiceImage, botChoiceImage, message) {
     let botDiv = document.createElement('div');
     let messageDiv = document.createElement('div');
 
-    console.log(message);
+    // console.log(message);
     // console.log(humanChoiceImage);
 
     //humanDiv.innerHTML = "<img style='box-shadow: 0 10px 50px rgba(251, 119, 119, 1);' src = ' " + imagesDatabase[humanChoiceImage] + " '  >";
     humanDiv.innerHTML = `<img style='box-shadow: 0 10px 50px ${message.color};' src = ' ${imagesDatabase[humanChoiceImage]}'  >`;
 
 
-    messageDiv.innerHTML = "<p style='font-size:3em; font-weight:700; padding-top:20%; height:100%;'>" + message.message + "</p>";
+    messageDiv.innerHTML = "<h2 style='font-size:3em; font-weight:700; padding-top:20%; height:100%; color: " + message.color + " ; '>" + message.message + "</h2>";
     let botColor;
     if (message.color === 'red') {
         botColor = 'blue';
