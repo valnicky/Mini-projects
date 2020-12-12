@@ -179,10 +179,10 @@ function greenFunc() {
 }
 
 function randomFunc() {
-    let colors = ['btn-danger', 'btn-primary', 'btn-success'];
+    let colors = ['btn-danger', 'btn-primary', 'btn-success', 'btn-warning'];
     for (let i = 0; i < btns.length; i++) {
         btns[i].classList.remove(btns[i].classList[1]);
-        let rndm = Math.floor(Math.random() * 3);
+        let rndm = Math.floor(Math.random() * 4);
         console.log(rndm);
 
         btns[i].classList.add(colors[rndm]);

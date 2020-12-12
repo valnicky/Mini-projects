@@ -1,7 +1,8 @@
 .container-1,
 .container-2,
 .container-3,
-.container-4 {
+.container-4,
+.container-5 {
     background-color: #ffd;
     margin: 0 auto;
     width: 75%;
@@ -11,7 +12,8 @@
 
 .flex-box-container-1,
 .flex-box-container-2,
-.flex-box-container-4 {
+.flex-box-container-4,
+.flex-box-container-5 {
     border: 1px solid #000;
     display: flex;
     padding: 10px;
@@ -74,4 +76,46 @@
 .flex-box-container-3 div:hover {
     /* box-shadow: 0px 10px 50px rgba(80, 134, 235, 0.7);*/
     border-radius: 15px;
+}
+
+.container-5 {
+    background-color: rgb(224, 247, 224);
+}
+
+.flex-box-container-5 {
+    flex-direction: column;
+}
+
+.containerPlay {
+    font-size: 1.2em;
+    padding: 10px;
+    font-weight: 700;
+    color: #fee;
+    background-color: rgb(2, 43, 21);
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    height: 350px;
+}
+
+.containerPlay div {
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.btnsContainer {
+    border: 1px solid #000;
+    padding: 10px;
+    background-color: rgb(2, 43, 21);
+}
+
+.btnsPlay {
+    background-color: rgb(2, 43, 21);
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.btnsPlay button {
+    margin: 10px;
+    padding: 5px 10px;
 }
