@@ -199,3 +199,19 @@ function resetFunc() {
 
 
 /* Challenge 5 Blackjack */
+
+document.querySelector('#hitBtn').addEventListener('click', hitPlay());
+document.querySelector('#standBtn').addEventListener('click', standPlay());
+document.querySelector('#dealBtn').addEventListener('click', dealPlay());
+
+function hitBtn() {
+
+}
+
+function standBtn() {
+
+}
+
+function dealBtn() {
+
+}
