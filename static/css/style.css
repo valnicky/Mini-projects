@@ -133,3 +133,8 @@
     background-color: rgb(71, 15, 15);
     color: #fff;
 }
+
+#you img,
+#dealer img {
+    margin: 10px;
+}

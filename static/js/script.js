@@ -213,16 +213,26 @@ const YOU = blackjackGame['you'];
 const DEALER = blackjackGame['dealer'];
 let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
+let hitSound = new Audio('static/sounds/swish.m4a');
+let looseSound = new Audio('static/sounds/aww.mp3');
+
 function hitPlay() {
+    showCard();
+}
+
+function showCard() {
+    let randCard = Math.floor(Math.random() * 13);
+    //console.log(randCard);
+    let randImgCard = cards[randCard];
+    //console.log(randImgCard);
+
     let cardImg = document.createElement('img');
-    cardImg.src = 'static/images/Q.png';
-    cardImg.width = '180';
+    cardImg.src = `static/images/${randImgCard}.png`;
+    cardImg.width = '90';
 
     document.querySelector(YOU['box']).appendChild(cardImg);
 
-    let randCard = Math.floor(Math.random() * 13);
-    //console.log(randCard);
-
+    hitSound.play();
 }
 
 function standPlay() {
