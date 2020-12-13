@@ -217,10 +217,10 @@ let hitSound = new Audio('static/sounds/swish.m4a');
 let looseSound = new Audio('static/sounds/aww.mp3');
 
 function hitPlay() {
-    showCard();
+    showCard(YOU);
 }
 
-function showCard() {
+function showCard(activePlayer) {
     let randCard = Math.floor(Math.random() * 13);
     //console.log(randCard);
     let randImgCard = cards[randCard];
@@ -230,7 +230,7 @@ function showCard() {
     cardImg.src = `static/images/${randImgCard}.png`;
     cardImg.width = '90';
 
-    document.querySelector(YOU['box']).appendChild(cardImg);
+    document.querySelector(activePlayer['box']).appendChild(cardImg);
 
     hitSound.play();
 }
@@ -240,5 +240,15 @@ function standPlay() {
 }
 
 function dealPlay() {
+    let allImgsMe = document.querySelector('#you').querySelectorAll('img');
+    let allImgsDealer = document.querySelector('#dealer').querySelectorAll('img');
+
+    //console.log(allImgs);
+    for (let i = 0; i < allImgsMe.length; i++) {
+        allImgsMe[i].remove();
+    }
+    for (let i = 0; i < allImgsDealer.length; i++) {
+        allImgsDealer[i].remove();
+    }
 
 }
