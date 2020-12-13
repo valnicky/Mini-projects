@@ -211,6 +211,7 @@ let blackjackGame = {
 
 const YOU = blackjackGame['you'];
 const DEALER = blackjackGame['dealer'];
+let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
 function hitPlay() {
     let cardImg = document.createElement('img');
@@ -219,6 +220,8 @@ function hitPlay() {
 
     document.querySelector(YOU['box']).appendChild(cardImg);
 
+    let randCard = Math.floor(Math.random() * 13);
+    //console.log(randCard);
 
 }
 
