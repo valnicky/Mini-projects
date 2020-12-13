@@ -196,3 +196,6 @@ function resetFunc() {
         btns[i].classList.add(arrColors[i]);
     }
 }
+
+
+/* Challenge 5 Blackjack */
