@@ -200,18 +200,32 @@ function resetFunc() {
 
 /* Challenge 5 Blackjack */
 
-document.querySelector('#hitBtn').addEventListener('click', hitPlay());
-document.querySelector('#standBtn').addEventListener('click', standPlay());
-document.querySelector('#dealBtn').addEventListener('click', dealPlay());
+document.querySelector('#hitBtn').addEventListener('click', hitPlay);
+document.querySelector('#standBtn').addEventListener('click', standPlay);
+document.querySelector('#dealBtn').addEventListener('click', dealPlay);
 
-function hitBtn() {
+let blackjackGame = {
+    'you': { 'result': '#your-result', 'box': '#you', 'score': '0' },
+    'dealer': { 'result': '#dealer-result', 'box': '#dealer', 'score': '0' }
+}
+
+const YOU = blackjackGame['you'];
+const DEALER = blackjackGame['dealer'];
+
+function hitPlay() {
+    let cardImg = document.createElement('img');
+    cardImg.src = 'static/images/Q.png';
+    cardImg.width = '180';
+
+    document.querySelector(YOU['box']).appendChild(cardImg);
+
 
 }
 
-function standBtn() {
+function standPlay() {
 
 }
 
-function dealBtn() {
+function dealPlay() {
 
 }
