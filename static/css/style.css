@@ -119,3 +119,17 @@
     margin: 10px;
     padding: 5px 10px;
 }
+
+.table {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #000;
+}
+
+.table td,
+.table th {
+    text-align: center;
+    background-color: rgb(71, 15, 15);
+    color: #fff;
+}
