@@ -226,6 +226,8 @@ function hitPlay() {
 
     updateScore(card, YOU);
     showScore(YOU);
+
+    calcScore(YOU['score'], YOU);
 }
 
 function randomCard() {
@@ -235,13 +237,25 @@ function randomCard() {
 }
 
 function showCard(card, activePlayer) {
-    let cardImg = document.createElement('img');
-    cardImg.src = `static/images/${card}.png`;
-    cardImg.width = '90';
+    if (activePlayer === YOU && activePlayer['score'] < 21) {
+        let cardImg = document.createElement('img');
+        cardImg.src = `static/images/${card}.png`;
+        cardImg.width = '90';
 
-    document.querySelector(activePlayer['box']).appendChild(cardImg);
+        document.querySelector(activePlayer['box']).appendChild(cardImg);
 
-    hitSound.play();
+        hitSound.play();
+    } else {
+        activePlayer = DEALER;
+        let cardImg = document.createElement('img');
+        cardImg.src = `static/images/${card}.png`;
+        cardImg.width = '90';
+
+        document.querySelector(activePlayer['box']).appendChild(cardImg);
+
+        hitSound.play();
+    }
+
 }
 
 function standPlay() {
@@ -262,9 +276,35 @@ function dealPlay() {
 }
 
 function updateScore(card, activePlayer) {
-    activePlayer['score'] += blackjackGame['cardsMap'][card];
+    if (card === 'A') {
+        //if adding 11 keeps me bellow 21, add 11 otherwise add 1
+        if ((activePlayer['score'] + blackjackGame['cardsMap'][card][1]) <= 21) {
+            activePlayer['score'] += blackjackGame['cardsMap'][card][1];
+        } else {
+            activePlayer['score'] += blackjackGame['cardsMap'][card][0];
+        }
+    } else {
+        activePlayer['score'] += blackjackGame['cardsMap'][card];
+    }
 }
 
 function showScore(activePlayer) {
-    document.querySelector(activePlayer['result']).textContent = activePlayer['score'];
+    if (document.querySelector(activePlayer['result']) > 21) {
+        document.querySelector(activePlayer['result']).textContent = 'BUST!';
+        document.querySelector(activePlayer['result']).style.color = 'red';
+    } else {
+        document.querySelector(activePlayer['result']).textContent = activePlayer['score'];
+    }
+
+}
+
+function calcScore(score, activePlayer) {
+    let letsplay = document.querySelector('#letsplay');
+    if (score > 21) {
+        letsplay.textContent = 'You lost!!!';
+    } else if (score === 21) {
+        letsplay.textContent = 'You won!!!';
+    } else {
+
+    }
 }
