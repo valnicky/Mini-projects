@@ -205,29 +205,38 @@ document.querySelector('#standBtn').addEventListener('click', standPlay);
 document.querySelector('#dealBtn').addEventListener('click', dealPlay);
 
 let blackjackGame = {
-    'you': { 'result': '#your-result', 'box': '#you', 'score': '0' },
-    'dealer': { 'result': '#dealer-result', 'box': '#dealer', 'score': '0' }
+    'you': { 'result': '#your-result', 'box': '#you', 'score': 0 },
+    'dealer': { 'result': '#dealer-result', 'box': '#dealer', 'score': 0 },
+    'cards': ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'],
+    'cardsMap': { '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10, 'A': [1, 11] },
 }
 
 const YOU = blackjackGame['you'];
 const DEALER = blackjackGame['dealer'];
-let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+
 
 let hitSound = new Audio('static/sounds/swish.m4a');
 let looseSound = new Audio('static/sounds/aww.mp3');
 
 function hitPlay() {
-    showCard(YOU);
+    let newCard = randomCard();
+    let card = blackjackGame['cards'][newCard];
+    //console.log(randImgCard);
+    showCard(card, YOU);
+
+    updateScore(card, YOU);
+    showScore(YOU);
 }
 
-function showCard(activePlayer) {
+function randomCard() {
     let randCard = Math.floor(Math.random() * 13);
     //console.log(randCard);
-    let randImgCard = cards[randCard];
-    //console.log(randImgCard);
+    return randCard;
+}
 
+function showCard(card, activePlayer) {
     let cardImg = document.createElement('img');
-    cardImg.src = `static/images/${randImgCard}.png`;
+    cardImg.src = `static/images/${card}.png`;
     cardImg.width = '90';
 
     document.querySelector(activePlayer['box']).appendChild(cardImg);
@@ -250,5 +259,12 @@ function dealPlay() {
     for (let i = 0; i < allImgsDealer.length; i++) {
         allImgsDealer[i].remove();
     }
+}
 
+function updateScore(card, activePlayer) {
+    activePlayer['score'] += blackjackGame['cardsMap'][card];
+}
+
+function showScore(activePlayer) {
+    document.querySelector(activePlayer['result']).textContent = activePlayer['score'];
 }
