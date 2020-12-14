@@ -224,10 +224,12 @@ function hitPlay() {
     //console.log(randImgCard);
     showCard(card, YOU);
 
+
     updateScore(card, YOU);
     showScore(YOU);
-
     calcScore(YOU['score'], YOU);
+
+
 }
 
 function randomCard() {
@@ -241,21 +243,16 @@ function showCard(card, activePlayer) {
         let cardImg = document.createElement('img');
         cardImg.src = `static/images/${card}.png`;
         cardImg.width = '90';
-
         document.querySelector(activePlayer['box']).appendChild(cardImg);
-
         hitSound.play();
     } else {
         activePlayer = DEALER;
         let cardImg = document.createElement('img');
         cardImg.src = `static/images/${card}.png`;
         cardImg.width = '90';
-
         document.querySelector(activePlayer['box']).appendChild(cardImg);
-
         hitSound.play();
     }
-
 }
 
 function standPlay() {
@@ -273,6 +270,12 @@ function dealPlay() {
     for (let i = 0; i < allImgsDealer.length; i++) {
         allImgsDealer[i].remove();
     }
+    YOU['score'] = 0;
+    document.querySelector(YOU['result']).textContent = 0;
+    document.querySelector(YOU['result']).style.color = '#ffe';
+    DEALER['score'] = 0;
+    document.querySelector(DEALER['result']).textContent = 0;
+    document.querySelector(DEALER['result']).style.color = '#ffe';
 }
 
 function updateScore(card, activePlayer) {
@@ -289,12 +292,17 @@ function updateScore(card, activePlayer) {
 }
 
 function showScore(activePlayer) {
-    if (document.querySelector(activePlayer['result']) > 21) {
+    let a = activePlayer['score'];
+    console.log(a);
+    if (activePlayer['score'] > 21) {
         document.querySelector(activePlayer['result']).textContent = 'BUST!';
         document.querySelector(activePlayer['result']).style.color = 'red';
     } else {
         document.querySelector(activePlayer['result']).textContent = activePlayer['score'];
     }
+}
+
+function dealerLogic() {
 
 }
 
