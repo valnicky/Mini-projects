@@ -252,7 +252,8 @@ function showCard(card, activePlayer) {
 }
 
 function dealPlay() {
-    calcScore();
+    //console.log(showResult(calcScore()));
+    showResult(calcScore());
     let allImgsMe = document.querySelector('#you').querySelectorAll('img');
     let allImgsDealer = document.querySelector('#dealer').querySelectorAll('img');
 
@@ -264,15 +265,15 @@ function dealPlay() {
         allImgsDealer[i].remove();
     }
     YOU['score'] = 0;
-    document.querySelector(YOU['result']).textContent = 0;
+    //  document.querySelector(YOU['result']).textContent = 0;
     document.querySelector(YOU['result']).style.color = '#ffe';
     DEALER['score'] = 0;
-    document.querySelector(DEALER['result']).textContent = 0;
+    //  document.querySelector(DEALER['result']).textContent = 0;
     document.querySelector(DEALER['result']).style.color = '#ffe';
 
-    let letsplay = document.querySelector('#letsplay');
-    letsplay.textContent = "Let's play!";
-    letsplay.style.color = '#666';
+    /* let letsplay = document.querySelector('#letsplay');
+     letsplay.textContent = "Let's play!";
+     letsplay.style.color = '#666';*/
 }
 
 function updateScore(card, activePlayer) {
@@ -311,27 +312,41 @@ function dealerLogic() {
 //compute winner and return who just won
 function calcScore() {
     let winner;
-    let letsplay = document.querySelector('#letsplay');
 
     if (YOU['score'] <= 21) {
         if (YOU['score'] > DEALER['score'] || (DEALER['score'] > 21)) {
             winner = YOU;
-            letsplay.textContent = 'You won!';
-            letsplay.style.color = 'blue';
         } else if (YOU['score'] < DEALER['score']) {
             winner = DEALER;
-            letsplay.textContent = 'You lost!';
-            letsplay.style.color = 'red';
         } else if (YOU['score'] === DEALER['score']) {
-            console.log('you drew!');
+            //  console.log('you drew!');
         }
 
     } else if (YOU['score'] > 21 && DEALER['score'] <= 21) {
-        letsplay.textContent = 'You lost!';
-        letsplay.style.color = 'red';
         winner = DEALER;
     } else if (YOU['score'] > 21 && DEALER['score'] > 21) {
-        console.log('You drew!');
+        //console.log('You drew!');
     }
+    //  console.log(winner);
     return winner;
+}
+
+function showResult(winner) {
+    let messsage, mesColor;
+    if (winner === YOU) {
+        mesColor = 'green';
+        message = 'You won!';
+        winSound.play();
+    } else if (winner === DEALER) {
+        mesColor = 'red';
+        message = 'You lost!';
+        lossSound.play();
+    } else {
+        message = 'You drew!';
+        mesColor = 'black';
+    }
+
+    let letsplay = document.querySelector('#letsplay');
+    letsplay.textContent = message;
+    letsplay.style.color = mesColor;
 }
