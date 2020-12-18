@@ -199,7 +199,6 @@ function resetFunc() {
 
 
 /* Challenge 5 Blackjack */
-
 document.querySelector('#hitBtn').addEventListener('click', hitPlay);
 document.querySelector('#standBtn').addEventListener('click', dealerLogic);
 document.querySelector('#dealBtn').addEventListener('click', dealPlay);
@@ -230,6 +229,10 @@ function hitPlay() {
         //console.log(randImgCard);
         showCard(card, YOU);
         updateScore(card, YOU);
+
+        if (YOU['score'] > 21) {
+            dealerLogic();
+        }
         showScore(YOU);
     }
 }
@@ -248,7 +251,6 @@ function showCard(card, activePlayer) {
         document.querySelector(activePlayer['box']).appendChild(cardImg);
         hitSound.play();
     } else if (activePlayer === DEALER && activePlayer['score'] < 21) {
-
         let cardImg = document.createElement('img');
         cardImg.src = `static/images/${card}.png`;
         cardImg.width = '90';
@@ -272,6 +274,7 @@ function dealPlay() {
         for (let i = 0; i < allImgsDealer.length; i++) {
             allImgsDealer[i].remove();
         }
+
         YOU['score'] = 0;
         document.querySelector(YOU['result']).textContent = 0;
         document.querySelector(YOU['result']).style.color = '#ffe';
@@ -305,7 +308,7 @@ function showScore(activePlayer) {
     // let a = activePlayer['score'];
     //console.log(a);
     if (activePlayer['score'] > 21) {
-        document.querySelector(activePlayer['result']).textContent = 'BUST!';
+        document.querySelector(activePlayer['result']).textContent = 'BUST! score:' + activePlayer['score'];
         document.querySelector(activePlayer['result']).style.color = 'red';
     } else {
         document.querySelector(activePlayer['result']).textContent = activePlayer['score'];
